@@ -1,0 +1,63 @@
+/*
+ * To change this template, choose Tools | Templates
+ * and open the template in the editor.
+ */
+
+package dodadibroevi;
+
+/*
+ * To change this template, choose Tools | Templates
+ * and open the template in the editor.
+ */
+
+import javax.swing.*;
+import java.applet.*;
+import java.awt.*;
+import java.awt.event.*;
+
+public class DodadiBroevi extends Applet implements ActionListener {
+  TextField input,output;
+  Label labela1,labela2;
+  Button kopce1;
+  JLabel labela;
+  int broj, vkupno = 0;
+    @Override
+  public void init(){
+    labela1 = new Label("Vnesete broj : ");
+    add(labela1);
+    labela1.setBackground(Color.white);
+    labela1.setForeground(Color.black);
+    input = new TextField(5);
+    add(input);
+    labela2 = new Label("Vkupno: ");
+    add(labela2);
+    labela2.setBackground(Color.white);
+    labela2.setForeground(Color.black);
+    output = new TextField(20);
+    add(output);
+//    input.addActionListener( this );
+    kopce1 = new Button("Dodadi");
+    add(kopce1);
+    kopce1.addActionListener(this);
+    labela = new JLabel("Ova e primerok za labela");
+    add(labela);
+    setBackground(Color.blue);
+
+//    output.addActionListener( this );
+  }
+  public void actionPerformed(ActionEvent ae){
+    try{
+//      broj = Integer.parseInt(ae.getActionCommand());
+      broj = Integer.parseInt(input.getText());
+      vkupno = vkupno+broj;
+      input.setText("");
+      output.setText(Integer.toString(vkupno));
+      labela.setForeground(Color.blue);
+      labela.setText("Izlezot na vtoriot text-box e: " + output.getText());
+    }
+    catch(NumberFormatException e){
+      labela.setForeground(Color.white);
+      labela.setText("Vnesovte pogresen broj!");
+    }
+  }
+}
